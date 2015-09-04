@@ -1,10 +1,10 @@
 <test>
     <h1 each={ items }>
-        <a href="#" onclick={ open }><img src="{ image }" alt=""></a>
-        { text }
+        { title }<br>
+        { body }
     </h1>
     <script>
-        this.items = json_data.hoge;
+        this.items = this.opts.data;
 
         open(ev){
             page("/user");

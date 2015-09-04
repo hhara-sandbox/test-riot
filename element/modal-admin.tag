@@ -2,7 +2,7 @@
     <div class="window">admin</div>
     <style>
         modal .window{
-            position: absolute;
+            position: fixed;
             left: 0;
             right: 0;
             top: 0;

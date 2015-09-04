@@ -1,24 +1,38 @@
-<?php include('function.php'); ?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
-<body data-json='<?php echo get_json_data(); ?>'>
+<body>
     <div>
         <test></test>
         <test></test>
         <hoge></hoge>
     </div>
     <modal></modal>
+    <script src="https://wzrd.in/standalone/superagent@latest"></script>
     <script src="bower_components/riot/riot.min.js"></script>
     <script src="bower_components/page/page.js"></script>
     <script src="js/tag.min.js"></script>
     <script>
-        var json_data = JSON.parse(document.body.dataset.json);
+        var request = window.superagent;
 
-        riot.mount('test, hoge');
+        var hogeJson = null;
+
+        request
+            .get("http://jsonplaceholder.typicode.com/posts/")
+            .end(function(error, response){
+                console.log(response);
+                hogeJson = response.body;
+
+                riot.mount('test', {
+                    data : hogeJson
+                });
+            })
+        ;
+
+        riot.mount('hoge');
 
         page("/", function(){});
 

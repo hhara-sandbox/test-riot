@@ -1,8 +1,8 @@
 <modal-user class="{ is-show: is_show }" onclick={ close }>
     <div class="window">user</div>
     <style>
-        modal .window{
-            position: absolute;
+        modal-user .window{
+            position: fixed;
             left: 0;
             right: 0;
             top: 0;
